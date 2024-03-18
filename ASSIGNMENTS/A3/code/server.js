@@ -57,6 +57,7 @@ app.get("/deleteFeed", function (req, res) {
     var url = req.query.id;
     var name = req.query.name;
     db.collection('feeds').remove({ _id: MS.helper.toObjectID(url) }, function (err, result) {
+        db.collection('feeds').save(result, function(err, result)
         res.send("ok");
     });
 });
