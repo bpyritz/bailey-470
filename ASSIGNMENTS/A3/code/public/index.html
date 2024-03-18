@@ -52,6 +52,7 @@
                     url: './deleteFeed?id=' + item._id + '&name=' + item.name,
                     type: 'GET',
                     success: function (data) {
+                        $("#feedList").html("");
                    main(); 
                     },
                     error: function (error) {
