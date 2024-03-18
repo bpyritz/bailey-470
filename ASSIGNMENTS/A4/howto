@@ -1,0 +1,29 @@
+Go to AWS Modules
+Under module 14 click Sandbox
+Click start lab and wait for dot to turn green
+Click green dot→ EC2 → Launch Instance
+Under Application and OS Images, select Ubuntu, click the arrow and select Ubuntu server 20.04
+Under Key Pair, select Proceed without a key pair
+Under security setting, check boxes to allow HTTPS and HTTP traffic from the Internet
+Under Configure storage, change the 8 to 28 GiB
+Click launch instance
+Click the instance ID and on the next page click instance ID when it says Running under status
+Click connect and again on the next page
+Install node.js and mongoDB by copying and pasting: curl -s https://gist.githubusercontent.com/tejaswigowda/f289e9bff13d152876e8d4b3281142f8/raw/df37df2e16a3166e686357a045751a7c18bbeebe/installNodeMongoUbuntu16.04.sh | bash
+In command line, type sudo nano /etc/mongod.conf
+Change bindIP to 0.0.0.0 and cntrl+x and Y to save
+Restart mongo by typing sudo service mongod restart
+Go to the instance details tab and click on security
+Click the link that says launch wizard under security groups
+Click edit inbound rules and add rule
+Set port range to 27017 and set source as MyIP
+Add rule, set port range to 8080 and set source as Anywhere-IPv4
+Save rules
+Go back to instance tab & restart mongo: sudo service mongod restart
+Copy the public IP of instance, open compass, and paste IP in place of ‘localhost’
+Type in VScode terminal: cd rssApp
+Node server.js (insertpublicIPhere)
+Link will say localhost8080, command and click
+Click add new feed button and paste link https://rss.applemarketingtools.com/api/v2/us/music/most-played/10/albums.json
+Delete button: in VScode index.html, copy and paste the code for the edit feed button and modify it to have code about the Delete button instead, remove code that includes newName
+Commit changes and restart in terminal; cntrl+c then type node server.js (publicIPhere) and click localhost8080 link
