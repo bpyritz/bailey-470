@@ -57,10 +57,10 @@ app.get("/deleteFeed", function (req, res) {
     var url = req.query.id;
     var name = req.query.name;
     db.collection('feeds').remove({ _id: MS.helper.toObjectID(url) }, function (err, result) {
-        db.collection('feeds').save(result, function(err, result)
-        res.send("ok");
+        db.collection('feeds').save(result, function(err, result) {
+        res.send("ok"); })
     });
-});
+})
 
 app.use(methodOverride());
 app.use(bodyParser());
@@ -68,4 +68,4 @@ app.use(express.static(__dirname + '/public'));
 app.use(errorHandler());
 
 console.log("Simple static server listening at http://" + hostname + ":" + port);
-app.listen(port);
+app.listen(port); 
