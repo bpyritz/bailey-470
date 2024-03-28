@@ -5,7 +5,7 @@ require('greenlock-express').create({
 //, server: 'https://acme-staging-v02.api.letsencrypt.org/directory'  // staging
 , email: ''                               // CHANGE THIS
 , agreeTos: true
-, approveDomains: [ '', '' ]              // CHANGE THIS
+, approveDomains: [ 'bpyritz.httpsexample.xyz', 'www.bpyritz.httpsexample.xyz' ]              // CHANGE THIS
 , store: require('greenlock-store-fs')
 , configDir: homeDir
 , app: require('./server.js')
