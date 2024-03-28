@@ -10,6 +10,7 @@ var client = require('node-rest-client').Client;
 var restClient = new client();
 
 var dbserverip = process.argv.slice(2)[0]
+|| "localhost"
 console.log(dbserverip);
 var db = MS.db("mongodb://" + dbserverip + ":27017/rssApp" , {native_parser: true});
 
@@ -61,4 +62,6 @@ app.use(express.static(__dirname + '/public'));
 app.use(errorHandler());
 
 console.log("Simple static server listening at http://" + hostname + ":" + port);
-app.listen(port);
+//app.listen(port);
+if (require.main === module) { app.listen(port); }
+else{ module.exports = app; }

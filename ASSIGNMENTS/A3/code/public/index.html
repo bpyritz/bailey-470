@@ -46,8 +46,8 @@
 
         function deleteFeed(){
             var item = allFeeds[currSelectedFeed];
-            confirmation = confirm('Are you sure you want to delete' + item.name + "?");
-            if (confirmation) {
+            var confirmDelete = confirm('Are you sure you want to delete' + item.name + "?");
+            if (confirmDelete) {
                 $.ajax({
                     url: './deleteFeed?id=' + item._id + '&name=' + item.name,
                     type: 'GET',
